@@ -30,7 +30,7 @@ Xamarin.Forms enables you to build native UIs for iOS, Android, macOS, Linux, an
 
 ## Screens
 
-![credentials](Documents/Images/credentials.png) ![subscription](Documents/Images/select-subscription.png) ![capture](Documents/images/capture.png) ![services](Documents/images/services.png) ![deployment](Documents/images/deployment-options.png) ![progress](Documents/images/deployment-progress.png)
+![credentials](Documents/Images/credentials.png) ![subscription](Documents/Images/select-subscription.png) ![capture](Documents/Images/capture.png) ![services](Documents/Images/services.png) ![deployment](Documents/Images/deployment-options.png) ![progress](Documents/Images/deployment-progress.png)
 
 ## Requirements
 
@@ -85,9 +85,9 @@ You need a Computer Vision service in order to use the handwriting recognition f
 To create your own Computer Vision instance you can find instructions [in the Azure docs](https://docs.microsoft.com/en-us/azure/cognitive-services/computer-vision/vision-api-how-to-topics/howtosubscribe). 
 Once you've provisioned the service, you can retrieve the your service endpoint URI and endpoint key as per the images below:
 
-![Computer Vision settings](Documents/images/computervision_1.png =800x)
+![Computer Vision settings](Documents/Images/computervision_1.png)
 
-![Computer Vision API keys](Documents/images/computervision_2.png =800x)
+![Computer Vision API keys](Documents/Images/computervision_2.png)
 
 Finally, open the `MagnetsMobileClient\VisualProvision\AppSettings.cs` file and populate the `ComputerVisionEndpoint` and `ComputerVisionKey` variables with the right values settings.
 
@@ -121,7 +121,7 @@ private const string TAG_AZURE_FUNCTIONS = "AZURE_FUNCTIONS";
 
 Once you've trained your model, you need to retrieve the API keys. The image below shows you how:
 
-![](Documents/images/customvision_1.png =800x)
+![](Documents/Images/customvision_1.png)
 
 Use the settings highlighted in the image to populate the `CustomVisionPredictionUrl` and `CustomVisionPredictionKey` variables in the `MagnetsMobileClient\VisualProvision\AppSettings.cs` file.
 
