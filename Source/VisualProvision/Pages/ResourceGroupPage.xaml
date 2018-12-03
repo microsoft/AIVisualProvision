@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pages:BaseContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    x:Class="VisualProvision.Pages.ResourceGroupPage" 
+    xmlns:autoCompleteView="clr-namespace:VisualProvision.Controls.AutoCompleteView" 
+    xmlns:controls="clr-namespace:VisualProvision.Controls"
+    xmlns:templates="clr-namespace:VisualProvision.Templates;assembly=VisualProvision"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:l10n="clr-namespace:VisualProvision.Utils.Localization"
+    xmlns:pages="clr-namespace:VisualProvision.Pages"
+    ios:Page.UseSafeArea="true"  
+    NavigationPage.BackButtonTitle=""
+    Title="{l10n:Localize ResourceGroupPage_Title}"
+    Style="{StaticResource PageStyle}">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+
+            <Style x:Key="TitleLabelStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="FontSize" Value="{StaticResource FontSizeH2}" />
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+            </Style>
+
+            <Style x:Key="SectionTitleLabelStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="#66ffffff" />
+                <Setter Property="FontSize" Value="{StaticResource FontSizeP2}" />
+                <Setter Property="FontFamily" Value="{StaticResource InterUIRegular}" />
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+            </Style>
+            <Style x:Key="ResourceAutoCompleteViewStyle" TargetType="autoCompleteView:AutoCompleteView">
+                <Setter Property="FontSize" Value="{StaticResource FontSizeP2}" />
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="PlaceholderTextColor" Value="White" />
+                <Setter Property="SuggestionBackgroundColor" Value="{StaticResource LightGray}" />
+                <Setter Property="SuggestionBorderColor" Value="{StaticResource LightGray}" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ScrollView>
+
+        <StackLayout
+            Padding="{StaticResource PagePadding}">
+            <Label 
+                Text="{l10n:Localize ResourceGroupPage_SelectRegion_Text}"
+                VerticalOptions="Start"
+                Style="{StaticResource TitleLabelStyle}"/>
+
+            <controls:FormFieldContainer
+                Grid.Row="1"         
+                Margin="0, 0, 0, 24"
+                LabelText="{l10n:Localize ResourceGroupPage_SelectRegion_Label}">
+                <controls:FormFieldContainer.FieldView>
+                    <Grid>
+                        <controls:ExtendedPicker
+                            Title="{l10n:Localize ResourceGroupPage_SelectRegion_PickerTitle}"
+                            PlaceholderColor="White"
+                            ItemsSource="{Binding Regions}"
+                            SelectedItem="{Binding Region, Mode=TwoWay}"
+                            ItemDisplayBinding="{Binding Name}">
+                        </controls:ExtendedPicker>
+                        <Image
+                            Margin="0, 0, 8, 0"
+                            Source="ic_chevron"
+                            Aspect="AspectFit"
+                            VerticalOptions="Center"
+                            HorizontalOptions="End" />
+                    </Grid>
+                </controls:FormFieldContainer.FieldView>
+            </controls:FormFieldContainer>
+
+            <StackLayout 
+                Grid.Row="2"
+                Orientation="Horizontal"
+                VerticalOptions="Start">
+                <Label
+                    Text="{l10n:Localize ResourceGroupPage_WantToUseAnExistingRg_Label}"
+                    HorizontalOptions="StartAndExpand" />
+                <Switch 
+                    Margin="4, 0"
+                    IsToggled="{Binding UseExistingResourceGroup}"
+                    HorizontalOptions="End" />
+            </StackLayout>
+
+            <!-- Existing group selector -->
+            <controls:FormFieldContainer
+                Grid.Row="3"
+                IsVisible="{Binding UseExistingResourceGroup}"
+                Margin="0, 0, 0, 24"
+                LabelText="{l10n:Localize ResourceGroupPage_ResourceGroup_Label}"
+                VerticalOptions="Start">
+                <controls:FormFieldContainer.FieldView>
+                    <autoCompleteView:AutoCompleteView                                
+                        ItemsSource="{Binding ResourceGroups}"  
+                        SelectedItem="{Binding ResourceGroup}"
+                        ExpanderIcon="ic_chevron.png"
+                        RotateExpanderIcon="True"
+                        MaxResults="5" 
+                        ShowSeparator="False"
+                        OpenOnFocus="False"
+                        AllowFreeText="False"
+                        Placeholder="{l10n:Localize ResourceGroupPage_ResourceGroup_Placeholder}"
+                        EmptyText="{l10n:Localize ResourceGroupPage_ResourceGroup_EmptyText}"
+                        SearchMember="Name"
+                        Style="{StaticResource ResourceAutoCompleteViewStyle}">
+                        <autoCompleteView:AutoCompleteView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <templates:ResourceGroupItemTemplate />
+                                </ViewCell>
+                            </DataTemplate>
+                        </autoCompleteView:AutoCompleteView.ItemTemplate>
+                    </autoCompleteView:AutoCompleteView>
+                </controls:FormFieldContainer.FieldView>
+            </controls:FormFieldContainer>
+
+            <!-- New group input -->
+            <controls:FormFieldContainer
+                Grid.Row="3"
+                IsVisible="{Binding UseExistingResourceGroup, Converter={StaticResource InverseBoolConverter}}"
+                Margin="0, 0, 0, 24"
+                LabelText="{l10n:Localize ResourceGroupPage_NewResourceGroup_Label}"
+                VerticalOptions="Start">
+                <controls:FormFieldContainer.FieldView>
+                    <StackLayout>
+                        <controls:ExtendedEntry 
+                            Placeholder="{l10n:Localize ResourceGroupPage_NewResourceGroup_Placeholder}"
+                            Text="{Binding NewResourceGroupName.Value, Mode=TwoWay}" />
+                        <Label
+                            IsVisible="{Binding NewResourceGroupName.IsValid, Converter={StaticResource InverseBoolConverter}}" 
+                            Text="{Binding NewResourceGroupName.Errors, Converter={StaticResource TakeFirstFromCollectionConverter}}"
+                            Style="{StaticResource ValidationErrorLabelStyle}"/>
+                    </StackLayout>
+                </controls:FormFieldContainer.FieldView>
+            </controls:FormFieldContainer>
+
+            <Grid
+                Grid.Row="4"
+                VerticalOptions="EndAndExpand">
+                <Button 
+                    Text="{l10n:Localize ResourceGroupPage_Deploy_Button}"
+                    Command="{Binding NavigateToDeployCommand}" 
+                    IsEnabled="{Binding CanContinue}"
+                    VerticalOptions="End"/>
+            </Grid>
+        </StackLayout>
+    </ScrollView>
+</pages:BaseContentPage>

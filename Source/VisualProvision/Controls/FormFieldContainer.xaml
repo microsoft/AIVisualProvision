@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="VisualProvision.Controls.FormFieldContainer"
+    x:Name="fieldContainer">
+    <ContentView.Content>
+        <Grid RowSpacing="{OnPlatform 12, iOS=8}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <!-- Label -->
+            <Label 
+                Grid.Row="0"
+                x:Name="topLabel"
+                Text="{Binding LabelText, Source={x:Reference fieldContainer}}"
+                Style="{Binding LabelStyle, Source={x:Reference fieldContainer}}" />
+            <!-- Input container -->
+            <Grid
+                Grid.Row="1">
+                <ContentPresenter 
+                    HorizontalOptions="Fill"
+                    Content="{Binding FieldView, Source={x:Reference fieldContainer}}" />
+                <ContentPresenter 
+                    HorizontalOptions="End"
+                    VerticalOptions="End"
+                    Content="{Binding StatusView, Source={x:Reference fieldContainer}}" />
+            </Grid>
+        </Grid>
+    </ContentView.Content>
+</ContentView>

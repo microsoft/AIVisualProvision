@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:VisualProvision.Controls"
+    xmlns:resources="clr-namespace:VisualProvision.Resources"
+    x:Class="VisualProvision.Resources.Common">
+    
+    <ResourceDictionary>
+        <ResourceDictionary.MergedDictionaries>
+            <resources:Colors />
+            <resources:Fonts />
+        </ResourceDictionary.MergedDictionaries>
+    </ResourceDictionary>
+
+    <OnPlatform x:Key="PagePadding" x:TypeArguments="Thickness" Default="16, 0" />
+
+    <Style x:Key="PageStyle" TargetType="{x:Type ContentPage}">
+        <Setter Property="BackgroundColor" Value="{StaticResource DarkGray}" />
+    </Style>
+
+    <ControlTemplate x:Key="PageTemplate">
+        <Grid>
+            <ContentPresenter 
+                VerticalOptions="Fill"
+                HorizontalOptions="Fill" />
+            <Grid
+                IsVisible="{TemplateBinding BindingContext.IsBusy}"
+                BackgroundColor="#44000000">
+                <ActivityIndicator
+                    WidthRequest="40"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"
+                    Color="{StaticResource LightBlue}"
+                    IsRunning="{TemplateBinding BindingContext.IsBusy}"
+                    IsVisible="{TemplateBinding BindingContext.IsBusy}" />
+            </Grid>
+        </Grid>
+    </ControlTemplate>
+
+    <Style x:Key="BaseLabelStyle"  TargetType="{x:Type Label}">
+        <Setter Property="TextColor" Value="White" />
+        <Setter Property="FontFamily" Value="{StaticResource InterUIRegular}" />
+    </Style>
+
+    <Style TargetType="{x:Type Label}" BasedOn="{StaticResource BaseLabelStyle}" />
+
+    <Style x:Key="SectionHeaderStyle" 
+           TargetType="Label"
+           BasedOn="{StaticResource BaseLabelStyle}">
+        <Setter Property="FontSize" Value="{StaticResource FontSizeH1}" />
+        <Setter Property="FontFamily" Value="{StaticResource InterUIMedium}" />
+    </Style>
+
+    <Style x:Key="FormLabelStyle" 
+           TargetType="Label"
+           BasedOn="{StaticResource BaseLabelStyle}">
+        <Setter Property="FontSize" Value="{StaticResource FontSizeP2}" />
+        <Setter Property="Opacity" Value="0.4" />
+    </Style>
+
+    <Style x:Key="ValidationErrorLabelStyle" 
+           TargetType="Label"
+           BasedOn="{StaticResource BaseLabelStyle}">
+        <Setter Property="TextColor" Value="{StaticResource NormalYellow}" />
+        <Setter Property="FontSize" Value="{StaticResource FontSizeP2}" />
+    </Style>
+
+    <Style TargetType="{x:Type controls:FormFieldContainer}">
+        <Setter Property="LabelStyle" Value="{StaticResource FormLabelStyle}" />
+    </Style>
+
+    <Style TargetType="{x:Type Button}">
+        <Setter Property="BackgroundColor" Value="{StaticResource DarkBlue}" />
+        <Setter Property="TextColor" Value="White" />
+        <Setter Property="CornerRadius" Value="24" />
+        <Setter Property="HeightRequest" Value="50" />
+        <Setter Property="WidthRequest" Value="268" />
+        <Setter Property="FontSize" Value="{StaticResource FontSizeP2}" />
+        <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+        <Setter Property="HorizontalOptions" Value="Center" />
+        <Setter Property="Margin" Value="0, 0, 0, 18" />
+        <Style.Triggers>
+            <Trigger 
+                TargetType="Button"
+                Property="IsEnabled" 
+                Value="False">
+                <Setter Property="BackgroundColor" Value="{StaticResource LightGray}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style TargetType="{x:Type controls:ExtendedEntry}">
+        <Setter Property="BackgroundColor"
+                        Value="Transparent" />
+        <Setter Property="TextColor"
+                        Value="White" />
+        <Setter Property="PlaceholderColor"
+                        Value="White" />
+        <Setter Property="HeightRequest"
+                        Value="44" />
+        <Setter Property="FontSize"
+                        Value="{StaticResource FontSizeP1}" />
+        <Setter Property="FontFamily"
+                        Value="{StaticResource InterUIRegular}" />
+        <Setter Property="HorizontalOptions"
+                        Value="FillAndExpand" />
+        <Setter Property="FontAttributes"
+                        Value="Bold" />
+        <Setter Property="FocusLineColor"
+                        Value="{StaticResource DarkBlue}" />
+    </Style>
+
+    <Style TargetType="{x:Type ActivityIndicator}">
+        <Setter Property="Color" Value="{StaticResource DarkBlue}" />
+        <Setter Property="VerticalOptions" Value="Center" />
+        <Setter Property="HorizontalOptions" Value="Center" />
+    </Style>
+
+    <Style x:Key="BasePickerStyle" TargetType="{x:Type controls:ExtendedPicker}">
+        <Setter Property="TextColor" Value="White" />
+        <Setter Property="HeightRequest" Value="48" />
+        <Setter Property="FontSize" Value="{StaticResource FontSizeP1}" />
+        <Setter Property="FontFamily" Value="{StaticResource InterUIRegular}" />
+        <Style.Triggers>
+            <Trigger 
+                TargetType="Picker"
+                Property="IsEnabled" 
+                Value="False">
+                <Setter Property="TextColor" Value="LightGray" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style TargetType="{x:Type controls:ExtendedPicker}" BasedOn="{StaticResource BasePickerStyle}" />
+
+</ResourceDictionary>

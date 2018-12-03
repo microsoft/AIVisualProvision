@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pages:BaseContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="VisualProvision.Pages.ResultsPage"
+    xmlns:lottie="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
+    xmlns:templates="clr-namespace:VisualProvision.Templates;assembly=VisualProvision"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:l10n="clr-namespace:VisualProvision.Utils.Localization"
+    xmlns:pages="clr-namespace:VisualProvision.Pages"
+    ios:Page.UseSafeArea="true"
+    NavigationPage.BackButtonTitle=""
+    Title="{l10n:Localize ResultsPage_Title}"
+    Style="{StaticResource PageStyle}">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <ListView
+            Grid.Row="0" 
+            BackgroundColor="Transparent"
+            ItemsSource="{Binding AzureResources}" 
+            CachingStrategy="RecycleElement"
+            SeparatorVisibility="None"
+            HasUnevenRows="True"
+            Margin="0, 24">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <templates:ResultItemTemplate />
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <Grid    
+            Grid.Row="1"
+            TranslationY="5">
+            <lottie:AnimationView
+                x:Name="AnimationView"
+	            Animation="01-loading.json"
+	            Loop="True" 
+	            AutoPlay="True"
+	            VerticalOptions="Fill"
+                HorizontalOptions="Center"
+                WidthRequest="336"
+                HeightRequest="96"  />
+        </Grid>
+
+        <Grid    
+            Grid.Row="1"
+            VerticalOptions="End">
+            <Button               
+                x:Name="btnDone"
+                IsVisible="False"
+                Text="{l10n:Localize ResultsPage_Done_Button}"
+                Command="{Binding DoneCommand}"
+                IsEnabled="{Binding DeploymentDone}" />
+        </Grid>
+    </Grid>
+</pages:BaseContentPage>

@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="VisualProvision.Resources.Fonts">
+
+    <OnPlatform x:Key="FontSizeH1"
+              x:TypeArguments="x:Double"
+              iOS="20"
+              Android="20" />
+
+    <OnPlatform x:Key="FontSizeH2"
+              x:TypeArguments="x:Double"
+              iOS="18"
+              Android="18" />
+
+    <OnPlatform x:Key="FontSizeP1"
+              x:TypeArguments="x:Double"
+              iOS="16"
+              Android="16" />
+
+    <OnPlatform x:Key="FontSizeP2"
+              x:TypeArguments="x:Double"
+              iOS="14"
+              Android="14" />
+    
+    <!-- FONTS -->
+    <OnPlatform x:Key="InterUIMedium"
+                x:TypeArguments="x:String"
+                iOS="Inter-UI-Medium"
+                Android="fonts/Inter-UI-Medium.otf#Inter UI Medium" />
+
+    <OnPlatform x:Key="InterUIRegular"
+                x:TypeArguments="x:String"
+                iOS="Inter-UI-Regular"
+                Android="fonts/Inter-UI-Regular.otf#Inter UI" />
+
+</ResourceDictionary>

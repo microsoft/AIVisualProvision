@@ -1,0 +1,12 @@
+<Project>
+
+	<ItemGroup>
+		
+		<PackageReference Include="StyleCop.Analyzers" Version="1.1.1-beta.61">
+		  <PrivateAssets>all</PrivateAssets>
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+		</PackageReference>
+		
+	</ItemGroup>
+	
+</Project>

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    x:Class="VisualProvision.Templates.ResultItemTemplate">
+   <ContentView.Resources>
+        <ResourceDictionary>
+
+            <Style x:Key="LogoBackgroundStyle" TargetType="Frame">
+                <Setter Property="BackgroundColor" Value="{StaticResource DarkGray}" />
+                <Setter Property="HasShadow" Value="False" />
+                <Setter Property="CornerRadius" Value="24" />
+                <Setter Property="HeightRequest" Value="24" />
+                <Setter Property="WidthRequest" Value="24" />
+                <Setter Property="Padding" Value="12" />
+                <Setter Property="Margin" Value="6" />
+            </Style>
+            
+            <Style x:Key="NameLabelStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="{StaticResource FontSizeH2}" />
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="Margin" Value="6, 6, 6, 0" />
+            </Style>         
+            
+            <Style x:Key="DescriptionLabelStyle" TargetType="Label" BasedOn="{StaticResource NameLabelStyle}">
+                <Setter Property="FontSize" Value="{StaticResource FontSizeP2}" />
+                <Setter Property="Margin" Value="6, 0, 6, 6" />
+            </Style>
+            
+        </ResourceDictionary>
+    </ContentView.Resources>
+    <ContentView.Content>
+        <Grid
+            BackgroundColor="{StaticResource DarkGray}">
+            <Grid
+                BackgroundColor="{StaticResource LightGray}"
+                HeightRequest="60"
+                Margin="18, 4">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid
+                    Grid.Column="0">
+                    <Frame
+                        Style="{StaticResource LogoBackgroundStyle}">   
+                        <Grid>
+                            <Image 
+                                Opacity="0.4"
+                                IsVisible="{Binding IsCreated, Converter={StaticResource InverseBoolConverter}}"
+                                Source="{Binding Type, Converter={StaticResource ServiceIconConverter}}"
+                                Aspect="AspectFit" />
+                            <ActivityIndicator
+                                Color="White"
+                                IsRunning="{Binding IsDeploying}"/>    
+                            <Image
+                                Source="ic_check.png" 
+                                Aspect="AspectFit"
+                                IsVisible="{Binding IsCreated}"/>
+                            <Image
+                                Source="ic_error.png"
+                                Aspect="AspectFit"
+                                IsVisible="{Binding HasFailed}"/>
+                        </Grid>
+                    </Frame>
+                </Grid>
+                <Grid    
+                    Grid.Column="1"
+                    RowSpacing="4">      
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Label
+                        Grid.Row="0"
+                        Text="{Binding Name}"
+                        TextColor="{Binding IsCreated, Converter={StaticResource ResultColorConverter}}"
+                        Style="{StaticResource NameLabelStyle}" />
+
+                    <Label 
+                        Grid.Row="1"
+                        Text="{Binding Description}"
+                        TextColor="{Binding IsCreated, Converter={StaticResource ResultColorConverter}}"
+                        Style="{StaticResource DescriptionLabelStyle}"/>
+                </Grid>
+            </Grid>
+        </Grid>
+    </ContentView.Content>
+</ContentView>

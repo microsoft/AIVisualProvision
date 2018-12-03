@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:VisualProvision.Controls"
+    xmlns:repeaterView="clr-namespace:Xamarin.CustomControls;assembly=Xamarin.CustomControls.RepeaterView" 
+    x:Class="VisualProvision.Controls.AutoCompleteView.AutoCompleteView"
+    x:Name="autoCompleteView">
+    <ContentView.Content>
+        <StackLayout
+            Spacing="0">
+            <StackLayout 
+                x:Name="suggestedItemsContainerTop"
+                IsVisible="false" 
+                BackgroundColor="Transparent" 
+                Margin="0,0,0,-1">
+            </StackLayout>                     
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />  
+                    <ColumnDefinition Width="24" />
+                </Grid.ColumnDefinitions>
+                <controls:ExtendedEntry 
+                    x:Name="mainEntry" 
+                    Grid.Column="0" 
+                    Grid.ColumnSpan="2"
+                    Text="{Binding CurrentText, Source={x:Reference autoCompleteView}}"
+                    Placeholder="{Binding Placeholder, Source={x:Reference autoCompleteView}}"
+                    PlaceholderColor="{Binding PlaceholderTextColor, Source={x:Reference autoCompleteView}}"
+                    TextChanged="SearchTextTextChanged" 
+                    Focused="SearchTextFocused" 
+                    Unfocused="SearchTextUnfocused" />
+                <Image 
+                    x:Name="expanderImage"
+                    Grid.Column="1"
+                    Aspect="AspectFit"
+                    Margin="7, 0">
+                </Image>
+            </Grid>
+            <StackLayout 
+                x:Name="suggestedItemsContainerBottom"
+                IsVisible="false" 
+                BackgroundColor="Transparent"
+                Margin="0,-1,0,0">
+                <Frame 
+                    x:Name="suggestedItemsOuterContainer" 
+                    BackgroundColor="White" 
+                    HasShadow="false"
+                    OutlineColor="Silver"
+                    CornerRadius="0"
+                    Padding="0">
+                    <repeaterView:RepeaterView 
+                        x:Name="suggestedItemsRepeaterView" 
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        ShowSeparator="true" 
+                        SeparatorColor="Silver"
+                        SeparatorHeight="1" />
+                </Frame>
+            </StackLayout>
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>  

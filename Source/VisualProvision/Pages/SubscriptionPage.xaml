@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pages:BaseContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:VisualProvision.Controls"
+    xmlns:effects="clr-namespace:VisualProvision.Effects;assembly=VisualProvision"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:l10n="clr-namespace:VisualProvision.Utils.Localization"
+    xmlns:pages="clr-namespace:VisualProvision.Pages"
+    x:Class="VisualProvision.Pages.SubscriptionPage"
+    ios:Page.UseSafeArea="true"
+    NavigationPage.BackButtonTitle=""
+    NavigationPage.HasBackButton="False"
+    Title="{l10n:Localize SubscriptionPage_Title}"
+    Style="{StaticResource PageStyle}">
+    <ContentPage.Effects>
+        <effects:StatusBarEffect 
+            BackgroundColor="{StaticResource DarkGray}"/>
+    </ContentPage.Effects>
+
+    <Grid 
+        Padding="{StaticResource PagePadding}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*" />
+            <RowDefinition Height="2*" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+
+        <!-- SUBSCRIPTION -->
+        <controls:FormFieldContainer
+            Grid.Row="0"
+            LabelText="{l10n:Localize SubscriptionPage_TargetSubscription_Label}"
+            IsEnabled="{Binding SubscriptionsAvailable}"
+            VerticalOptions="End">
+            <controls:FormFieldContainer.FieldView>
+                <Grid>
+                    <controls:ExtendedPicker
+                        Title="{l10n:Localize SubscriptionPage_TargetSubscription_PickerTitle}"
+                        PlaceholderColor="White"
+                        ItemsSource="{Binding Subscriptions}"
+                        ItemDisplayBinding="{Binding DisplayName}"
+                        SelectedItem="{Binding CurrentSubscription, Mode=TwoWay}">
+                    </controls:ExtendedPicker>
+                    <Image
+                        Margin="0, 0, 8, 0"
+                        Source="ic_chevron"
+                        Aspect="AspectFit"
+                        VerticalOptions="Center"
+                        HorizontalOptions="End" />
+                </Grid>
+            </controls:FormFieldContainer.FieldView>
+        </controls:FormFieldContainer>
+
+        <Grid
+            Grid.Row="1"
+            VerticalOptions="Start">
+            <Grid.GestureRecognizers>
+                <TapGestureRecognizer 
+                    Command="{Binding RefreshCommand}" />
+            </Grid.GestureRecognizers>
+            <StackLayout
+                Orientation="Horizontal"
+                Spacing="8"
+                Padding="8, 0"
+                HorizontalOptions="End">
+                <Label
+                    Text="{l10n:Localize SubscriptionPage_Refresh_Label}"
+                    HorizontalOptions="End"
+                    VerticalOptions="Center"
+                    Style="{StaticResource BaseLabelStyle}"
+                    FontSize="{Binding FontSizeP2}" />
+                <Image
+                    Source="ic_refresh"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Start" />
+            </StackLayout>
+        </Grid>
+        
+        <!-- LOGIN BUTTON -->
+        <Button 
+            Grid.Row="2" 
+            AutomationId="buttonContinue"
+            Text="Continue" 
+            Command="{Binding ContinueCommand}"
+            VerticalOptions="End">
+        </Button>
+    </Grid>
+</pages:BaseContentPage>

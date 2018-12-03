@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pages:BaseContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="VisualProvision.Pages.ServicesPage"
+    xmlns:templates="clr-namespace:VisualProvision.Templates;assembly=VisualProvision"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:l10n="clr-namespace:VisualProvision.Utils.Localization"
+    xmlns:pages="clr-namespace:VisualProvision.Pages"
+    ios:Page.UseSafeArea="true"
+    NavigationPage.BackButtonTitle=""
+    Title="{l10n:Localize ServicesPage_Title}"
+    Style="{StaticResource PageStyle}">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+
+            <Style x:Key="StatusLabelStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="FontSize" Value="{StaticResource FontSizeH2}" />
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+                <Setter Property="Margin" Value="18, 24, 18, 12" />
+            </Style>
+
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+        <!-- STATUS -->
+        <Label 
+          Grid.Row="0"
+          Text="{Binding StatusMessage}"
+          Style="{StaticResource StatusLabelStyle}"/>
+        <!-- SERVICES -->
+        <ListView
+          Grid.Row="2"
+          Grid.RowSpan="2"
+          BackgroundColor="Transparent"
+          ItemsSource="{Binding AzureResources}"
+          SelectionMode="None"
+          CachingStrategy="RecycleElement"
+          SeparatorVisibility="None"
+          HasUnevenRows="True">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <templates:ServiceItemTemplate />
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            <ListView.Footer>
+                <Grid HeightRequest="72" />
+            </ListView.Footer>
+        </ListView>
+        <Button
+          Grid.Row="3"
+          Text="{l10n:Localize Common_Next_Button}"      
+          Command="{Binding NavigateToResourceGroupCommand}"
+          IsEnabled="{Binding CanContinue}"/>
+    </Grid>
+</pages:BaseContentPage>

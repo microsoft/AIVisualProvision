@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary 
+    xmlns="http://xamarin.com/schemas/2014/forms"   
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="VisualProvision.Resources.Colors">
+
+    <!-- COLORS -->
+    <Color x:Key="DarkBlue">#0076FF</Color>
+    <Color x:Key="LightBlue">#3A95FF</Color>
+    <Color x:Key="DarkGray">#3A3A45</Color>
+    <Color x:Key="LightGray">#4C4C56</Color>
+    <Color x:Key="NormalYellow">#EB9200</Color>
+
+</ResourceDictionary>
