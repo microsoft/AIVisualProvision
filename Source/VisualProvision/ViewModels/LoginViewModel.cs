@@ -43,9 +43,8 @@ namespace VisualProvision.ViewModels
              * during development
              */
 
-           ClientId.Value = AppSettings.ClientId;
-           TenantId.Value = AppSettings.TenantId;
-            
+            ClientId.Value = AppSettings.ClientId;
+            TenantId.Value = AppSettings.TenantId;
 
             ClientId.IsValid = TenantId.IsValid = Password.IsValid = true;
 #else

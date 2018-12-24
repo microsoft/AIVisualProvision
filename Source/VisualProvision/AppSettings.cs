@@ -28,6 +28,5 @@
         // Endpoint example: https://westus.api.cognitive.microsoft.com/
         public const string ComputerVisionEndpoint = "INSERT COMPUTER VISION ENDPOINT HERE FOR HANDWRITING";
         public const string ComputerVisionKey = "INSERT YOUR COMPUTER VISION KEY HERE FOR HANDWRITING";
-
     }
 }
