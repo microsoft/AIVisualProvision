@@ -4,6 +4,9 @@
 
 As part of Connect(); 2018 we released the AI Vision Provision. This sample app leverages the power of Azure Cognitive Services (Computer Vision and Custom Vision) to analyze Azure Service logos and handwriting in order to identify potential services and then deploy them to Azure all from the comfort of your phone.
 
+Here is the YouTube URL of this app Demo during Connect 2018 
+https://youtu.be/5_iE7azx7Vo?t=2154
+
 The following services are currently supported:
 * Azure Functions
 * Azure Key Vault (handwriting only)
