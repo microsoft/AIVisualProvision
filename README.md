@@ -6,6 +6,11 @@ As part of Connect(); 2018 we released the AI Vision Provision. This sample app 
 
 [![Scott Hanselman's Keynote](http://img.youtube.com/vi/5_iE7azx7Vo/0.jpg)](https://youtu.be/5_iE7azx7Vo?t=2154)
 
+You can also download the mobile apps following these links:
+
+* [![Build status](https://build.appcenter.ms/v0.1/apps/8ee242da-48ab-47f7-bb0f-b71e150189d4/branches/master/badge)](https://appcenter.ms) [AI Visual Provision iOS App](https://aka.ms/aivisualprovisionios) 
+* [![Build status](https://build.appcenter.ms/v0.1/apps/9ef36c04-4657-41f5-bd29-9988da4bf84b/branches/master/badge)](https://appcenter.ms) [AI Visual Provision Android App](https://aka.ms/aivisualprovisionandroid)
+
 The following services are currently supported:
 * Azure Functions
 * Azure Key Vault (handwriting only)
