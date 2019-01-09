@@ -13,6 +13,7 @@ The following services are currently supported:
 * Azure SQL 
 * Azure Storage Account
 * Azure Web Apps
+* Azure Virtual Machine (Windows Server)
 
 ## Xamarin.Forms App (AI Visual Provision)
 
