@@ -43,6 +43,8 @@ namespace VisualProvision.Converters
                     return "ic_sql_database.png";
                 case AzureResourceType.KeyVault:
                     return "ic_key_vault.png";
+                case AzureResourceType.VirtualMachine:
+                    return "ic_virtual_machine.png";
                 default:
                     return string.Empty;
             }

@@ -23,6 +23,7 @@ namespace VisualProvision.Services.Management
         public const string AZURE_FUNCTIONS = "Azure Functions";
         public const string WEB_APPS = "Web Apps";
         public const string KEY_VAULT = "Key Vault";
+        public const string VIRTUAL_MACHINE = "Virtual Machine";
 
         private static Regex ResourceGroupNameRegex = new Regex(@"^[-\w\._\(\)]+$", RegexOptions.Compiled);
 

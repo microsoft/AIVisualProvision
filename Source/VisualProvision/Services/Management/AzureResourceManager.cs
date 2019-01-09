@@ -167,6 +167,14 @@ namespace VisualProvision.Services.Management
                 IsAvailable = true,
             });
 
+            allResources.Add(new AzureResource()
+            {
+                Type = AzureResourceType.VirtualMachine,
+                Name = AzureResourceNamingHelper.VIRTUAL_MACHINE,
+                Description = AzureResourceNamingHelper.VIRTUAL_MACHINE,
+                IsAvailable = true,
+            });
+
             AvailableResources = allResources.Where(r => r.IsAvailable).ToList();
         }
     }

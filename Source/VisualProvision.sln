@@ -6,7 +6,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VisualProvision.Android", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VisualProvision.iOS", "VisualProvision.iOS\VisualProvision.iOS.csproj", "{D514C396-56DA-4AD6-8C1F-F933382F096B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VisualProvision", "VisualProvision\VisualProvision.csproj", "{093C950E-DB49-48DD-A732-035DF79732F1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VisualProvision", "VisualProvision\VisualProvision.csproj", "{093C950E-DB49-48DD-A732-035DF79732F1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VisualProvision.UITest", "VisualProvision.UITest\VisualProvision.UITest.csproj", "{B19C892E-2628-4CA7-AD27-08D406A3B14B}"
 EndProject

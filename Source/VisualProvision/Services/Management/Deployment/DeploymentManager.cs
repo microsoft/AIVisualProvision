@@ -70,6 +70,9 @@ namespace VisualProvision.Services.Management.Deployment
                 case AzureResourceType.KeyVault:
                     deployment = new KeyVaultDeployment(resourceName, azure, options);
                     break;
+                case AzureResourceType.VirtualMachine:
+                    deployment = new VirtualMachineDeployment(resourceName, azure, options);
+                    break;
                 default:
                     Debug.WriteLine($"Service of type {resourceType} not supported!");
                     break;
@@ -90,6 +93,7 @@ namespace VisualProvision.Services.Management.Deployment
             const string WebAppPrefix = "web-";
             const string SqlPrefix = "sql-";
             const string KvPrefix = "vault-";
+            const string VmPrefix = "vm-";
 
             string prefix = string.Empty;
 
@@ -110,6 +114,9 @@ namespace VisualProvision.Services.Management.Deployment
                     break;
                 case AzureResourceType.SqlDatabase:
                     prefix = SqlPrefix;
+                    break;
+                case AzureResourceType.VirtualMachine:
+                    prefix = VmPrefix;
                     break;
                 case AzureResourceType.KeyVault:
                     prefix = KvPrefix;

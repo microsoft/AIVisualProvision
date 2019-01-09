@@ -20,5 +20,6 @@
         ApplicationInsights,
         AppService,
         KeyVault,
+        VirtualMachine
     }
 }

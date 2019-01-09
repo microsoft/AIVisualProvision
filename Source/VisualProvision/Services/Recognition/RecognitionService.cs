@@ -205,6 +205,10 @@ namespace VisualProvision.Services.Recognition
             { new List<string>() { "function" }, AzureResourceType.Functions },
             { new List<string>() { "key", "vault" }, AzureResourceType.KeyVault },
             { new List<string>() { "keyvault" }, AzureResourceType.KeyVault },
+            { new List<string>() { "vm" }, AzureResourceType.VirtualMachine },
+            { new List<string>() { "virtual", "machine" }, AzureResourceType.VirtualMachine },
+            { new List<string>() { "virtual", "machines" }, AzureResourceType.VirtualMachine },
+
         };
     }
 }
