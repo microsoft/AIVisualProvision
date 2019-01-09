@@ -28,8 +28,7 @@ IPA_PATH="$APPCENTER_OUTPUT_DIRECTORY/VisualProvision.iOS.ipa"
 
 DEFAULT_DEVICES="de95e76a"
 DEFAULT_XAMARIN_UITEST_VERSION="2.2.7"
-DEFAULT_UI_TEST_TOOLS_DIR__PART_1="/Users/vsts/.nuget/packages/xamarin.uitest/"
-DEFAULT_UI_TEST_TOOLS_DIR__PART_2="/tools"
+DEFAULT_UI_TEST_TOOLS_DIR="$APPCENTER_SOURCE_DIRECTORY/Source/packages/Xamarin.UITest.*/tools"
 DEFAULT_LOCALE="en_US"
 DEFAULT_TEST_SERIES="connect18"
 
@@ -40,10 +39,10 @@ fi
 
 if [ -z "$XAMARIN_UITEST_VERSION" ]; then
 	echo "WARNING! XAMARIN_UITEST_VERSION environment variable not set. Setting it to its default. Check the version of Xamarin.UITest you are using in your project"
-	UI_TEST_TOOLS_DIR="$DEFAULT_UI_TEST_TOOLS_DIR__PART_1$DEFAULT_XAMARIN_UITEST_VERSION$DEFAULT_UI_TEST_TOOLS_DIR__PART_2"
+	UI_TEST_TOOLS_DIR="$DEFAULT_UI_TEST_TOOLS_DIR"
 else
 	echo "Xamarin UITest version is set to $XAMARIN_UITEST_VERSION"
-	UI_TEST_TOOLS_DIR="$DEFAULT_UI_TEST_TOOLS_DIR__PART_1$XAMARIN_UITEST_VERSION$DEFAULT_UI_TEST_TOOLS_DIR__PART_2"
+	UI_TEST_TOOLS_DIR="$DEFAULT_UI_TEST_TOOLS_DIR"
 fi
 
 if [ -z "$CUSTOM_LOCALE" ]; then
@@ -72,4 +71,4 @@ echo "### Compiling UITest project"
 msbuild $UITEST_PROJECT_PATH/$UITEST_CSPROJ_NAME /t:build /p:Configuration=Release
 
 echo "### Launching AppCenter test run"
-appcenter test run uitest --app $APPCENTER_PROJECT_NAME --devices $DEVICES --app-path $IPA_PATH --test-series $CUSTOM_TEST_SERIES --locale $CUSTOM_LOCALE --build-dir $UITEST_PROJECT_PATH/bin/Release --uitest-tools-dir $UI_TEST_TOOLS_DIR --token $APPCENTER_TOKEN
+appcenter test run uitest --app $APPCENTER_PROJECT_NAME --devices $DEVICES --app-path $IPA_PATH --test-series $CUSTOM_TEST_SERIES --locale $CUSTOM_LOCALE --build-dir $UITEST_PROJECT_PATH/bin/Release --uitest-tools-dir $UI_TEST_TOOLS_DIR --token $APPCENTER_TOKEN --async
