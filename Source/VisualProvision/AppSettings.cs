@@ -21,12 +21,14 @@
 
         // Custom Vision
         // URL example: https://southcentralus.api.cognitive.microsoft.com/customvision/v2.0/Prediction/{GUID}/image
-        public const string CustomVisionPredictionUrl = "INSERT YOUR COMPUTER VISION API URL HERE FOR MAGNETS RECOGNITION";
-        public const string CustomVisionPredictionKey = "INSERT YOUR COMPUTER VISION PREDICTION KEY HERE FOR MAGNETS RECOGNITION";
+        // We are providing public endpoint in a free tier to showcase how the app works, feel free to replace these values with your own cognitive services.
+        public const string CustomVisionPredictionUrl = "https://southcentralus.api.cognitive.microsoft.com/customvision/v2.0/Prediction/41deb215-1c77-4679-81dd-5025c3998dbf/image";
+        public const string CustomVisionPredictionKey = "47c6b38bf1e245449f01405c144b9aef";
 
         // Computer Vision
         // Endpoint example: https://westus.api.cognitive.microsoft.com/
-        public const string ComputerVisionEndpoint = "INSERT COMPUTER VISION ENDPOINT HERE FOR HANDWRITING";
-        public const string ComputerVisionKey = "INSERT YOUR COMPUTER VISION KEY HERE FOR HANDWRITING";
+         // We are providing public endpoint in a free tier to showcase how the app works, feel free to replace these values with your own cognitive services.
+        public const string ComputerVisionEndpoint = "https://westus.api.cognitive.microsoft.com";
+        public const string ComputerVisionKey = "1579a0d8658044ad9d3d75a94935699a";
     }
 }
