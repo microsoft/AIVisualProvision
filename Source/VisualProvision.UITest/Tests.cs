@@ -12,15 +12,17 @@ namespace VisualProvision.UITest
         {
         }
 
+        // In order to run this test, please change "TestSettings" constants, indicating a valid configuration
+        /*
         [Test]
         public async Task SuccessSignInTestAsync()
         {
             await new LoginPage()
                 .EnterCredentials(TestSettings.ValidClientId, TestSettings.ValidTenantId, TestSettings.ValidPwd)
                 .SignIn();
-
             new SubscriptionPage();
         }
+        */
 
         [Test]
         public async Task FailedSignInTestAsync()
