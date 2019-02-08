@@ -18,22 +18,9 @@ The following services are currently supported:
 * Azure Storage Account
 * Azure Web Apps
 
-## Xamarin.Forms App (AI Visual Provision)
+## Demo Script and Blog Posts
 
-Xamarin.Forms enables you to build native UIs for iOS, Android, macOS, Linux, and Windows from a single, shared codebase. You can dive into app development with Xamarin.Forms by following our free self-guided learning from Xamarin University. This project exercises the following patterns and features:
-
-* Xamarin.Forms
-* XAML UI
-* Converters
-* Custom Controls
-* Custom Renderers
-* Data Binding
-* Effects
-* IoC
-* MVVM
-* Plugins for Xamarin
-* Styles
-* .NET Standard
+Check out the demo script **[Developing Intelligent Apps with Azure](Documents/DemoScript)** and a blog post **[Tutorial: Recognize Azure service logos in camera pictures](https://docs.microsoft.com/en-us/azure/cognitive-services/Custom-Vision-Service/logo-detector-mobile)** about this sample mobile application.
 
 ## Screens
 
@@ -133,6 +120,23 @@ Once you've trained your model, you need to retrieve the API keys. The image bel
 ![](Documents/Images/customvision_1.png)
 
 Use the settings highlighted in the image to populate the `CustomVisionPredictionUrl` and `CustomVisionPredictionKey` variables in the `MagnetsMobileClient\VisualProvision\AppSettings.cs` file.
+
+## Xamarin.Forms App (AI Visual Provision)
+
+Xamarin.Forms enables you to build native UIs for iOS, Android, macOS, Linux, and Windows from a single, shared codebase. You can dive into app development with Xamarin.Forms by following our free self-guided learning from Xamarin University. This project exercises the following patterns and features:
+
+* Xamarin.Forms
+* XAML UI
+* Converters
+* Custom Controls
+* Custom Renderers
+* Data Binding
+* Effects
+* IoC
+* MVVM
+* Plugins for Xamarin
+* Styles
+* .NET Standard
 
 ### App Center
 
