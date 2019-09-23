@@ -9,6 +9,7 @@ namespace VisualProvision.Services.Recognition
 {
     public class CustomVisionService
     {
+        // <snippet_prediction>
         public async Task<PredictionResult> PredictImageContentsAsync(Stream imageStream, CancellationToken cancellationToken)
         {
             var client = new HttpClient();
@@ -26,6 +27,7 @@ namespace VisualProvision.Services.Recognition
             var resultJson = await response.Content.ReadAsStringAsync();
             return JsonConvert.DeserializeObject<PredictionResult>(resultJson);
         }
+        // </snippet_prediction>
 
         private byte[] StreamToByteArray(Stream input)
         {
