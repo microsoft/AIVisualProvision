@@ -9,51 +9,27 @@
 # Environment variables :
 #
 # - APPCENTER_TOKEN. You need an AppCenter API token. Instructions on how to get it in https://docs.microsoft.com/en-us/appcenter/api-docs/
-# - XAMARIN_UITEST_VERSION. Version of the Xamarin.UITest NuGet package the project is using. Defaults to 2.2.7
+# - APPCENTER_PROJECT_NAME. URL of App Center project. For example: AppCenterDemos/AIVisualProvisioniOS
 # - DEVICES. ID or IDs of devices or device sets previously created in AppCenter. Defaults to "iPhone 8, iOS 12.1" (de95e76a)
-# - CUSTOM_LOCALE. Locale. Defaults to "en_US"
-# - CUSTOM_TEST_SERIES. Name of test series. Defaults to "connect18"
+# - ENABLE_UITESTS. Set to true if you want to run UI Tests
 #
-# NOTE: UI_TEST_TOOLS_DIR is where "test-cloud.exe" is. By default in AppCenter is /Users/vsts/.nuget/packages/xamarin.uitest/<xamarin uitest version>/tools
+# NOTE: UI_TEST_TOOLS_DIR is where "test-cloud.exe" is. By default in AppCenter is /Users/vsts/.nuget/packages/xamarin.uitest/2.2.7/tools
 
 if [ -z "$ENABLE_UITESTS" ]; then
 	echo "ERROR! You need to define in AppCenter the ENABLE_UITESTS environment variable. UI Tests will not run. Exiting..."
 	exit 0
 fi
 
-UITEST_PROJECT_PATH="$APPCENTER_SOURCE_DIRECTORY/MagnetsMobileClient/VisualProvision.UITest"
+UITEST_PROJECT_PATH="$APPCENTER_SOURCE_DIRECTORY/Source/VisualProvision.UITest"
 UITEST_CSPROJ_NAME="VisualProvision.UITest.csproj"
-APPCENTER_PROJECT_NAME="ImageDeploy/iOS"
 IPA_PATH="$APPCENTER_OUTPUT_DIRECTORY/VisualProvision.iOS.ipa"
 
 DEFAULT_DEVICES="de95e76a"
-DEFAULT_XAMARIN_UITEST_VERSION="2.2.7"
-DEFAULT_UI_TEST_TOOLS_DIR__PART_1="/Users/vsts/.nuget/packages/xamarin.uitest/"
-DEFAULT_UI_TEST_TOOLS_DIR__PART_2="/tools"
-DEFAULT_LOCALE="en_US"
-DEFAULT_TEST_SERIES="connect18"
+UI_TEST_TOOLS_DIR="/Users/vsts/.nuget/packages/xamarin.uitest/2.2.7/tools"
 
 if [ -z "$APPCENTER_TOKEN" ]; then
 	echo "ERROR! AppCenter API token is not set. Exiting..."
 	exit 1
-fi
-
-if [ -z "$XAMARIN_UITEST_VERSION" ]; then
-	echo "WARNING! XAMARIN_UITEST_VERSION environment variable not set. Setting it to its default. Check the version of Xamarin.UITest you are using in your project"
-	UI_TEST_TOOLS_DIR="$DEFAULT_UI_TEST_TOOLS_DIR__PART_1$DEFAULT_XAMARIN_UITEST_VERSION$DEFAULT_UI_TEST_TOOLS_DIR__PART_2"
-else
-	echo "Xamarin UITest version is set to $XAMARIN_UITEST_VERSION"
-	UI_TEST_TOOLS_DIR="$DEFAULT_UI_TEST_TOOLS_DIR__PART_1$XAMARIN_UITEST_VERSION$DEFAULT_UI_TEST_TOOLS_DIR__PART_2"
-fi
-
-if [ -z "$CUSTOM_LOCALE" ]; then
-	echo "CUSTOM_LOCALE environment variable not set. Setting it to its default $DEFAULT_LOCALE"
-	CUSTOM_LOCALE="$DEFAULT_LOCALE"
-fi
-
-if [ -z "$CUSTOM_TEST_SERIES" ]; then
-	echo "CUSTOM_TEST_SERIES environment variable not set. Setting it to its default $DEFAULT_TEST_SERIES"
-	CUSTOM_TEST_SERIES="$DEFAULT_TEST_SERIES"
 fi
 
 if [ -z "$DEVICES" ]; then
@@ -72,4 +48,4 @@ echo "### Compiling UITest project"
 msbuild $UITEST_PROJECT_PATH/$UITEST_CSPROJ_NAME /t:build /p:Configuration=Release
 
 echo "### Launching AppCenter test run"
-appcenter test run uitest --app $APPCENTER_PROJECT_NAME --devices $DEVICES --app-path $IPA_PATH --test-series $CUSTOM_TEST_SERIES --locale $CUSTOM_LOCALE --build-dir $UITEST_PROJECT_PATH/bin/Release --uitest-tools-dir $UI_TEST_TOOLS_DIR --token $APPCENTER_TOKEN
+appcenter test run uitest --app $APPCENTER_PROJECT_NAME --devices $DEVICES --app-path $IPA_PATH --test-series "master" --locale "en_US" --build-dir $UITEST_PROJECT_PATH/bin/Release --uitest-tools-dir $UI_TEST_TOOLS_DIR --token $APPCENTER_TOKEN --async

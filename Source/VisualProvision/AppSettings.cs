@@ -17,23 +17,20 @@
         public const string TenantId = "INSERT YOUR TENANTID HERE";
         // </snippet_serviceprincipal>
 
-        // App Center
-        public const string AppCenterAndroid = "INSERT YOUR APP CENTER IDENTIFIER FOR ANDROID HERE";
-        public const string AppCenterIos = "INSERT YOUR APP CENTER IDENTIFIER FOR IOS APP HERE";
+        // App Center (Feel free to change the following IDs with your App Center IDs).
+        public const string AppCenterAndroid = "c8fbe0d5-f676-40b9-927d-19f70365f7de";
+        public const string AppCenterIos = "a43c421b-70ac-4742-905a-24dc760696de";
 
         // <snippet_cusvis_keys>
         // Custom Vision
-        // URL example: https://southcentralus.api.cognitive.microsoft.com/customvision/v2.0/Prediction/{GUID}/image
         public const string CustomVisionPredictionUrl = "INSERT YOUR COMPUTER VISION API URL HERE FOR MAGNETS RECOGNITION";
         public const string CustomVisionPredictionKey = "INSERT YOUR COMPUTER VISION PREDICTION KEY HERE FOR MAGNETS RECOGNITION";
         // </snippet_cusvis_keys>
 
         // <snippet_comvis_keys>
         // Computer Vision
-        // Endpoint example: https://westus.api.cognitive.microsoft.com/
         public const string ComputerVisionEndpoint = "INSERT COMPUTER VISION ENDPOINT HERE FOR HANDWRITING";
         public const string ComputerVisionKey = "INSERT YOUR COMPUTER VISION KEY HERE FOR HANDWRITING";
         // </snippet_comvis_keys>
-
     }
 }

@@ -4,6 +4,13 @@
 
 As part of Connect(); 2018 we released the AI Vision Provision. This sample app leverages the power of Azure Cognitive Services (Computer Vision and Custom Vision) to analyze Azure Service logos and handwriting in order to identify potential services and then deploy them to Azure all from the comfort of your phone.
 
+[![Scott Hanselman's Keynote](http://img.youtube.com/vi/5_iE7azx7Vo/0.jpg)](https://youtu.be/5_iE7azx7Vo?t=2154)
+
+You can also download the mobile apps following these links:
+
+* [![Build status](https://build.appcenter.ms/v0.1/apps/8ee242da-48ab-47f7-bb0f-b71e150189d4/branches/master/badge)](https://appcenter.ms) [AI Visual Provision iOS App](https://aka.ms/aivisualprovisionios) 
+* [![Build status](https://build.appcenter.ms/v0.1/apps/9ef36c04-4657-41f5-bd29-9988da4bf84b/branches/master/badge)](https://appcenter.ms) [AI Visual Provision Android App](https://aka.ms/aivisualprovisionandroid)
+
 The following services are currently supported:
 * Azure Functions
 * Azure Key Vault (handwriting only)
@@ -11,22 +18,9 @@ The following services are currently supported:
 * Azure Storage Account
 * Azure Web Apps
 
-## Xamarin.Forms App (AI Visual Provision)
+## Demo Script and Blog Posts
 
-Xamarin.Forms enables you to build native UIs for iOS, Android, macOS, Linux, and Windows from a single, shared codebase. You can dive into app development with Xamarin.Forms by following our free self-guided learning from Xamarin University. This project exercises the following patterns and features:
-
-* Xamarin.Forms
-* XAML UI
-* Converters
-* Custom Controls
-* Custom Renderers
-* Data Binding
-* Effects
-* IoC
-* MVVM
-* Plugins for Xamarin
-* Styles
-* .NET Standard
+Check out the demo script **[Developing Intelligent Apps with Azure](Documents/DemoScript)** and a blog post **[Tutorial: Recognize Azure service logos in camera pictures](https://docs.microsoft.com/en-us/azure/cognitive-services/Custom-Vision-Service/logo-detector-mobile)** about this sample mobile application.
 
 ## Screens
 
@@ -93,9 +87,11 @@ Finally, open the `MagnetsMobileClient\VisualProvision\AppSettings.cs` file and 
 
 ### Azure Custom Vision - training the model
 
-The in-app logo recognition is accomplished using [Azure Custom Vision](https://azure.microsoft.com/en-us/services/cognitive-services/custom-vision-service/). In order to use the service in the app, you need to create a new Custom Vision project and train it with the images provided in the repo under the **documents/training_dataset** folder.
-If you have our Azure magnet sheets then this is the best and fastest way to train your Custom Vision project. . But this is a one-off requirement and you wont need
-to do it again unless you want to add a new logo. If you don't have the magnets then you can use any other image that contains the actual Azure service logos to train your model.
+The in-app logo recognition is accomplished by using [Azure Custom Vision](https://azure.microsoft.com/en-us/services/cognitive-services/custom-vision-service/). In order to use the service in the app, you need to create a new Custom Vision project and train it with the images provided in the repo under the **documents/training_dataset** folder. If you've never used the Custom Vision service before, then you can follow this tutorial [here](https://docs.microsoft.com/en-us/azure/cognitive-services/custom-vision-service/getting-started-build-a-classifier) and there's a great [Channel9 video](https://channel9.msdn.com/Shows/AI-Show/Azure-Custom-Vision-How-to-Train-and-Identify-Unique-Designs-or-Image-Content) that shows you how to do it end-to-end.
+
+If you have the Azure magnet sheets then this is the best and fastest way to train your Custom Vision project. If you don't have the magnets handy, we've included 2 PDFs ([sheet1](https://github.com/Microsoft/AIVisualProvision/blob/master/Documents/AzureMagnets1.pdf), [sheet2](https://github.com/Microsoft/AIVisualProvision/blob/master/Documents/AzureMagnets2.pdf)) with all our magnet logos in the **documents** section of this repo. 
+
+Note that the Custom Vision project creation and model training are a one-off requirement and you wont need to do this work again unless you want to add a new logo. New images can be added to improve the models accuracy and this is the only case where retraining will be required.
 
 > IMPORTANT! To further increase the prediction accuracy you may want to train the model using the same or as similar as possible conditions as your expected working environment.
 
@@ -124,6 +120,23 @@ Once you've trained your model, you need to retrieve the API keys. The image bel
 ![](Documents/Images/customvision_1.png)
 
 Use the settings highlighted in the image to populate the `CustomVisionPredictionUrl` and `CustomVisionPredictionKey` variables in the `MagnetsMobileClient\VisualProvision\AppSettings.cs` file.
+
+## Xamarin.Forms App (AI Visual Provision)
+
+Xamarin.Forms enables you to build native UIs for iOS, Android, macOS, Linux, and Windows from a single, shared codebase. You can dive into app development with Xamarin.Forms by following our free self-guided learning from Xamarin University. This project exercises the following patterns and features:
+
+* Xamarin.Forms
+* XAML UI
+* Converters
+* Custom Controls
+* Custom Renderers
+* Data Binding
+* Effects
+* IoC
+* MVVM
+* Plugins for Xamarin
+* Styles
+* .NET Standard
 
 ### App Center
 
