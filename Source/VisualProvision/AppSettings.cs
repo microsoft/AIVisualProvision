@@ -5,6 +5,7 @@
         // Photos storage
         public const string PhotoFolder = "VisualProvision";
 
+        // <snippet_serviceprincipal>
         /* 
          * Service principal
          *
@@ -14,21 +15,22 @@
          */
         public const string ClientId = "INSERT YOUR CLIENTID HERE";
         public const string TenantId = "INSERT YOUR TENANTID HERE";
+        // </snippet_serviceprincipal>
 
         // App Center (Feel free to change the following IDs with your App Center IDs).
         public const string AppCenterAndroid = "c8fbe0d5-f676-40b9-927d-19f70365f7de";
         public const string AppCenterIos = "a43c421b-70ac-4742-905a-24dc760696de";
 
+        // <snippet_cusvis_keys>
         // Custom Vision
-        // URL example: https://southcentralus.api.cognitive.microsoft.com/customvision/v2.0/Prediction/{GUID}/image
-        // We are providing public endpoint in a free tier to showcase how the app works, feel free to replace these values with your own cognitive services.
-        public const string CustomVisionPredictionUrl = "https://southcentralus.api.cognitive.microsoft.com/customvision/v2.0/Prediction/41deb215-1c77-4679-81dd-5025c3998dbf/image";
-        public const string CustomVisionPredictionKey = "47c6b38bf1e245449f01405c144b9aef";
+        public const string CustomVisionPredictionUrl = "INSERT YOUR COMPUTER VISION API URL HERE FOR MAGNETS RECOGNITION";
+        public const string CustomVisionPredictionKey = "INSERT YOUR COMPUTER VISION PREDICTION KEY HERE FOR MAGNETS RECOGNITION";
+        // </snippet_cusvis_keys>
 
+        // <snippet_comvis_keys>
         // Computer Vision
-        // Endpoint example: https://westus.api.cognitive.microsoft.com/
-         // We are providing public endpoint in a free tier to showcase how the app works, feel free to replace these values with your own cognitive services.
-        public const string ComputerVisionEndpoint = "https://westus.api.cognitive.microsoft.com";
-        public const string ComputerVisionKey = "1579a0d8658044ad9d3d75a94935699a";
+        public const string ComputerVisionEndpoint = "INSERT COMPUTER VISION ENDPOINT HERE FOR HANDWRITING";
+        public const string ComputerVisionKey = "INSERT YOUR COMPUTER VISION KEY HERE FOR HANDWRITING";
+        // </snippet_comvis_keys>
     }
 }

@@ -15,6 +15,7 @@ namespace VisualProvision.Services.Recognition
         private const int MaxUploadImageSizeBytes = MaxUploadImageSizeMB * 1024 * 1000;
         private const double PrecisionThreshold = 0.5;
 
+        // <snippet_constants>
         private const string TAG_ACTIVE_DIRECTORY = "ACTIVE_DIRECTORY";
         private const string TAG_APP_SERVICE = "APP_SERVICE";
         private const string TAG_NOTIFICATION_HUBS = "NOTIFICATION_HUBS";
@@ -31,6 +32,7 @@ namespace VisualProvision.Services.Recognition
         private const string TAG_REDIS_CACHE = "REDIS_CACHE";
         private const string TAG_APP_INSIGHTS = "APPLICATION_INSIGHTS";
         private const string TAG_AZURE_FUNCTIONS = "AZURE_FUNCTIONS";
+        // </snippet_constants>
 
         public async Task<IEnumerable<AzureResource>> GetResourcesAsync(MediaFile image)
         {
