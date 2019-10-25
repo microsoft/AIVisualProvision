@@ -3,18 +3,18 @@ using Android.Content.PM;
 using Android.OS;
 using Android.Runtime;
 using Lottie.Forms.Droid;
-using Plugin.Permissions;
 using Microsoft.AppCenter;
 using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
+using Plugin.Permissions;
 
 namespace VisualProvision.Droid
 {
     [Activity(
-        Label = "AI Visual Provision", 
-        Icon = "@mipmap/icon", 
-        Theme = "@style/MainTheme", 
-        MainLauncher = false, 
+        Label = "AI Visual Provision",
+        Icon = "@mipmap/icon",
+        Theme = "@style/MainTheme",
+        MainLauncher = false,
         ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation,
         ScreenOrientation = ScreenOrientation.Portrait)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
@@ -24,7 +24,7 @@ namespace VisualProvision.Droid
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
 
-            AppCenter.Start("88434356-2908-4207-acc5-ade188dfeb9a",typeof(Analytics), typeof(Crashes));
+            AppCenter.Start("88434356-2908-4207-acc5-ade188dfeb9a", typeof(Analytics), typeof(Crashes));
 
             base.OnCreate(savedInstanceState);
 
