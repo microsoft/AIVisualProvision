@@ -4,6 +4,9 @@ using Android.OS;
 using Android.Runtime;
 using Lottie.Forms.Droid;
 using Plugin.Permissions;
+using Microsoft.AppCenter;
+using Microsoft.AppCenter.Analytics;
+using Microsoft.AppCenter.Crashes;
 
 namespace VisualProvision.Droid
 {
@@ -21,8 +24,7 @@ namespace VisualProvision.Droid
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
 
-            AppCenter.Start("88434356-2908-4207-acc5-ade188dfeb9a",
-                   typeof(Analytics), typeof(Crashes));
+            AppCenter.Start("88434356-2908-4207-acc5-ade188dfeb9a",typeof(Analytics), typeof(Crashes));
 
             base.OnCreate(savedInstanceState);
 
