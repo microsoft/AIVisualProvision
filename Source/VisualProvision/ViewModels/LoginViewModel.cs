@@ -7,6 +7,10 @@ using VisualProvision.Utils;
 using VisualProvision.Utils.Validations;
 using Xamarin.Forms;
 
+using Microsoft.AppCenter;
+using Microsoft.AppCenter.Analytics;
+using Microsoft.AppCenter.Crashes;
+
 namespace VisualProvision.ViewModels
 {
     public class LoginViewModel : BaseViewModel
@@ -107,6 +111,8 @@ namespace VisualProvision.ViewModels
 
         private async Task LoginAsync()
         {
+            Crashes.GenerateTestCrash();
+
             bool loginSuccess = await TryAuthenticateAsync();
 
             if (loginSuccess)

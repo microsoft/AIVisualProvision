@@ -21,6 +21,9 @@ namespace VisualProvision.Droid
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
 
+            AppCenter.Start("88434356-2908-4207-acc5-ade188dfeb9a",
+                   typeof(Analytics), typeof(Crashes));
+
             base.OnCreate(savedInstanceState);
 
             Plugin.CurrentActivity.CrossCurrentActivity.Current.Init(this, savedInstanceState);
