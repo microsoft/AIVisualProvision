@@ -27,8 +27,8 @@ namespace VisualProvision.Services.Recognition
             var resultJson = await response.Content.ReadAsStringAsync();
             return JsonConvert.DeserializeObject<PredictionResult>(resultJson);
         }
+        
         // </snippet_prediction>
-
         private byte[] StreamToByteArray(Stream input)
         {
             byte[] buffer = new byte[16 * 1024];
