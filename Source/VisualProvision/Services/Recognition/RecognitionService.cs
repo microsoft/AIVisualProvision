@@ -32,8 +32,8 @@ namespace VisualProvision.Services.Recognition
         private const string TAG_REDIS_CACHE = "REDIS_CACHE";
         private const string TAG_APP_INSIGHTS = "APPLICATION_INSIGHTS";
         private const string TAG_AZURE_FUNCTIONS = "AZURE_FUNCTIONS";
-        // </snippet_constants>
 
+        // </snippet_constants>
         public async Task<IEnumerable<AzureResource>> GetResourcesAsync(MediaFile image)
         {
             Stream properStream = await GetCapturedPhotoStreamAsync(image);
