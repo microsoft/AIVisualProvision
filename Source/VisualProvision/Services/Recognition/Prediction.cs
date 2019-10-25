@@ -11,5 +11,6 @@
 
         public BoundingBox BoundingBox { get; set; }
     }
+     
     // </snippet_prediction_class>
 }
